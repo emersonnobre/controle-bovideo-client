@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+    font-size: 14px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.bgGreen {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Table styles */
+
+.mat-table {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+}
+
+.mat-cell {
+    color: black;
+}
+
+.mat-row {
+    background-color: rgb(241, 239, 239);
+}
+
+.mat-row:hover .mat-cell{
+    border-color: #424242;;
+}

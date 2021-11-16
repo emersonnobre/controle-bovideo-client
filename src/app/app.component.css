@@ -1,0 +1,15 @@
+.page {
+    height: 100%;
+    display: flex;
+    flex: 0 0 auto ;
+}
+
+.nav {
+    width: 15%;
+}
+
+.content {
+    padding: 2rem;
+    width: 80%;
+}
+
