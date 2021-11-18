@@ -1,0 +1,33 @@
+<mat-card class="form-container">
+    <div class="title">
+        <h1>Cadastrar propriedade</h1>
+    </div>
+    <form [formGroup]="propriedade_form">
+        <mat-form-field appearance="fill">
+            <mat-label>Nome da propriedade</mat-label>
+            <input formControlName="nome" matInput type="text">
+            <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Inscrição municipal</mat-label>
+            <input formControlName="inscricao_municipal" matInput type="text">
+            <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Município</mat-label>
+            <mat-select formControlName="municipio">
+              <mat-option value="option">Option</mat-option>
+            </mat-select>
+            <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+        </mat-form-field>
+        <div class="search-box">
+            <input id="search-produtor" type="text" placeholder="CPF do produtor" maxlength="11" [(ngModel)]="search_produtor_input" [ngModelOptions]="{standalone: true}" name="search_produtor_input"><button mat-button (click)="searchProdutor()"><mat-icon>search</mat-icon></button>
+            <span id="span-name"></span>
+            <mat-error *ngIf="search_submited">Este campo não pode ser vazio</mat-error>
+        </div>
+        <div class="button-group">
+            <button class="bgRed" mat-button (click)="cancel()">Cancelar</button>
+            <button type="submit" class="bgGreen" mat-button (click)="submit()" [disabled]="produtor_validate">Cadastrar</button>
+        </div>
+    </form>
+</mat-card>

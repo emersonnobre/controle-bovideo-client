@@ -1,0 +1,26 @@
+<button mat-raised-button class="bgGreen" (click)="redirectToCreate()">Cadastrar propriedade</button>
+
+<table class="dataTable" mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let propriedade"> {{propriedade.nome}} </td>
+    </ng-container>
+    <ng-container matColumnDef="inscricao_municipal">
+        <th mat-header-cell *matHeaderCellDef> Inscrição </th>
+        <td mat-cell *matCellDef="let propriedade"> {{propriedade.inscricao_municipal}} </td>
+    </ng-container>
+    <ng-container matColumnDef="municipio">
+        <th mat-header-cell *matHeaderCellDef> Município </th>
+        <td mat-cell *matCellDef="let propriedade"> {{propriedade.municipio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Ações </th>
+        <td mat-cell *matCellDef class="icons">
+            <a routerLink="/"><mat-icon class="edit">edit</mat-icon></a>
+            <a routerLink="/"><mat-icon class="delete">delete</mat-icon></a>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let propriedade; columns: displayedColumns;"></tr>
+</table>

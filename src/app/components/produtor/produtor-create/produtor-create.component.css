@@ -1,0 +1,16 @@
+.personalInfo, .address {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
