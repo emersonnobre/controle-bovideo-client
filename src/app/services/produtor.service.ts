@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Produtor } from '../models/produtor.model';
 
 @Injectable({
@@ -19,14 +20,13 @@ export class ProdutorService {
     private http: HttpClient
   ) { }
 
-  getAll(): void {
-
+  getAll(): Observable<Produtor[]> {
+    return this.http.get<Produtor[]>(this.base_url)
   }
 
-  getByCpf(cpf: string): Produtor {
-    const produtor = this.produtores.find(produtor => produtor.cpf == cpf)
-    if (produtor) return produtor
-    else return null
+  getByCpf(cpf: string): Observable<Produtor> {
+    const url = `${this.base_url}?cpf=${cpf}`
+    return this.http.get<Produtor>(url)
   }
 
   post(): void {

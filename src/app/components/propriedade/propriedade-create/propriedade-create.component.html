@@ -9,14 +9,14 @@
             <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>Inscrição municipal</mat-label>
-            <input formControlName="inscricao_municipal" matInput type="text">
+            <mat-label>Inscrição estadual</mat-label>
+            <input formControlName="inscricao_estadual" matInput type="text">
             <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Município</mat-label>
             <mat-select formControlName="municipio">
-              <mat-option value="option">Option</mat-option>
+              <mat-option *ngFor="let municipio of municipios" value="{{municipio.id}}">{{municipio.descricao}}</mat-option>
             </mat-select>
             <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
         </mat-form-field>
@@ -27,7 +27,7 @@
         </div>
         <div class="button-group">
             <button class="bgRed" mat-button (click)="cancel()">Cancelar</button>
-            <button type="submit" class="bgGreen" mat-button (click)="submit()" [disabled]="produtor_validate">Cadastrar</button>
+            <button type="submit" class="bgGreen" mat-button (click)="submit()" [disabled]="produtor_validate === false">Cadastrar</button>
         </div>
     </form>
 </mat-card>

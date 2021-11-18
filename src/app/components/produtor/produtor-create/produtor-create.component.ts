@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Validations } from 'src/app/directives/validations';
+import { Endereco } from 'src/app/models/endereco.model';
 import { Produtor } from 'src/app/models/produtor.model';
 
 @Component({
@@ -15,10 +16,8 @@ export class ProdutorCreateComponent implements OnInit {
   produtorForm: FormGroup
   submited: boolean = false
   submitedAlt: boolean = false
-  produtor: Produtor = {
-    nome: '',
-    cpf: ''
-  }
+  novoProdutor: Produtor
+  novoEndereco: Endereco
 
   constructor(
     private router: Router,
@@ -64,17 +63,24 @@ export class ProdutorCreateComponent implements OnInit {
   submit(): void {
     this.submited = true
     if (!this.produtorForm.valid) return
+    const produtor_data = this.produtorForm.value
+    this.novoProdutor = {
+      nome: produtor_data.nome,
+      cpf: produtor_data.cpf
+    }
+    this.novoEndereco = {
+      rua: produtor_data.rua,
+      numero: produtor_data.numero,
+      id_municipio: produtor_data.municipio,
+      id_produtor: 1
+    }
+
+    console.log('Produtor: ', this.novoProdutor)
+    console.log('Endereço: ', this.novoEndereco)
   }
 
   cancel(): void {
     this.router.navigate(['/produtor'])
-  }
-
-  getErrorMessage(form: FormGroup, campo: string) {
-    if (form.controls[campo].hasError('required')) {
-      return 'Este campo não pode ser vazio';
-    }
-    return 'Valor inválido para este campo';
   }
 
 }

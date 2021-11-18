@@ -11,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 // Components
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/templates/nav/nav.component';
-import { ProdutorComponent } from './components/produtor/produtor.component';
+import { ProdutorReadComponent } from './components/produtor/produtor-read/produtor-read.component';
 import { PropriedadeReadComponent } from './components/propriedade/propriedade-read/propriedade-read.component';
 import { RebanhoReadComponent } from './components/rebanho/rebanho-read/rebanho-read.component';
 import { ProdutorCreateComponent } from './components/produtor/produtor-create/produtor-create.component';
@@ -23,12 +23,15 @@ import { ProdutorUpdateComponent } from './components/produtor/produtor-update/p
 import { VacinacaoReadComponent } from './components/vacinacao/vacinacao-read/vacinacao-read.component';
 import { VacinacaoCreateComponent } from './components/vacinacao/vacinacao-create/vacinacao-create.component';
 import { VacinacaoUpdateComponent } from './components/vacinacao/vacinacao-update/vacinacao-update.component';
+import { VendaReadComponent } from './components/venda/venda-read/venda-read.component';
+import { VendaUpdateComponent } from './components/venda/venda-update/venda-update.component';
+import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    ProdutorComponent,
+    ProdutorReadComponent,
     PropriedadeReadComponent,
     RebanhoReadComponent,
     ProdutorCreateComponent,
@@ -40,6 +43,9 @@ import { VacinacaoUpdateComponent } from './components/vacinacao/vacinacao-updat
     VacinacaoReadComponent,
     VacinacaoCreateComponent,
     VacinacaoUpdateComponent,
+    VendaReadComponent,
+    VendaUpdateComponent,
+    VendaCreateComponent,
   ],
   imports: [
     BrowserModule,

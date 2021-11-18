@@ -1,6 +1,7 @@
 import { AbstractControl } from "@angular/forms";
 
 export class Validations {
+  
   static ValidaCpf(controle: AbstractControl) {
     const cpf = controle.value;
 
@@ -54,4 +55,5 @@ export class Validations {
     if (regex.test(numero)) return null
     return { numeroInvalido: true }
   }
+
 }

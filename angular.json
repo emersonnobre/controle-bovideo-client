@@ -10,7 +10,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
-          "strict": true
+          "strict": true,
+          "skipTests": true
         }
       },
       "root": "",
@@ -105,6 +106,11 @@
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "skipTests": true
     }
   },
   "defaultProject": "iagro-vacinacao-previa"

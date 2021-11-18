@@ -2,17 +2,17 @@
     <div class="title">
         <h1>Cadastrar produtor</h1>
     </div>
-    <form id="produtorForm" [formGroup]="produtorForm" (ngSubmit)="submit()">
+    <form id="produtorForm" [formGroup]="produtorForm">
         <div class="personalInfo">
             <h2>Informações pessoais</h2>
             <mat-form-field appearance="fill">
                 <mat-label>Nome do produtor</mat-label>
-                <input matInput type="text" formControlName="nome" name="nome" [(ngModel)]="produtor.nome">
+                <input matInput type="text" formControlName="nome" name="nome">
                 <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>CPF (somente números)</mat-label>
-                <input matInput type="text" formControlName="cpf" name="cpf" maxlength="11" [(ngModel)]="produtor.cpf">
+                <input matInput type="text" formControlName="cpf" name="cpf" maxlength="11">
                 <mat-error *ngIf="submited">CPF inválido</mat-error>
             </mat-form-field>
         </div>
@@ -27,7 +27,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Número</mat-label>
                     <input formControlName="numero" matInput type="text" name="numero" maxlength="5">
-                    <mat-error *ngIf="submited">{{ getErrorMessage(produtorForm, 'numero') }}</mat-error>
+                    <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Município</mat-label>
@@ -49,7 +49,7 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Número</mat-label>
                         <input formControlName="numero_alt" matInput type="text" name="numero_alt" maxlength="5">
-                        <mat-error *ngIf="submitedAlt">{{ getErrorMessage(addressAltForm, 'numero_alt') }}</mat-error>
+                        <mat-error *ngIf="submitedAlt">Este campo não pode ser vazio</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="fill">
                         <mat-label>Município</mat-label>

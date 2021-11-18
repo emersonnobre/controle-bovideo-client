@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RebanhoService } from 'src/app/services/rebanho.service';
 
 @Component({
   selector: 'app-rebanho-read',
@@ -8,22 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class RebanhoReadComponent implements OnInit {
 
   displayedColumns: string[] = ['especie', 'quantidade', 'propriedade', 'actions']
-  dataSource = [
-    {
-      especie: 'Bovino',
-      quantidade: 20000,
-      propriedade: 'Recanto dos sabiás'
-    },
-    {
-      especie: 'Bulbalino',
-      quantidade: 10000,
-      propriedade: 'Recanto dos sabiás'
-    },
-  ]
+  dataSource = []
 
-  constructor() { }
+  constructor(
+    private rebanho_service: RebanhoService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
+    this.rebanho_service.getAll().subscribe(response => this.dataSource = response)
+  }
+
+  redirectToCreate(): void {
+    this.router.navigate(['rebanho/create'])
   }
 
 }
