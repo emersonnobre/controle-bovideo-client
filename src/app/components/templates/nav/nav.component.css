@@ -3,14 +3,6 @@
     margin-right: 5px;
 }
 
-.navbar {
-    background-color: #258336;
-    width: 270px;
-    color: #fff;
-    height: 100%;
-    padding: 1rem .5rem;
-}
-
 .navbar-list {
     display: flex;
     flex-direction: column;

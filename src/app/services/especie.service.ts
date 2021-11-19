@@ -17,5 +17,9 @@ export class EspecieService {
   getAll(): Observable<Especie[]> {
     return this.http.get<Especie[]>(this.baseUrl)
   }
+
+  getById(id: number): Observable<Especie> {
+    return this.http.get<Especie>(this.baseUrl)
+  }
   
 }

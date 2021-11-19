@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EspecieService } from 'src/app/services/especie.service';
 import { RebanhoService } from 'src/app/services/rebanho.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class RebanhoReadComponent implements OnInit {
 
   constructor(
     private rebanho_service: RebanhoService,
+    private especie_service: EspecieService,
     private router: Router,
   ) { }
 

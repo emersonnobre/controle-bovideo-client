@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Endereco } from '../models/endereco.model';
 import { Produtor } from '../models/produtor.model';
 
 @Injectable({
@@ -9,6 +10,7 @@ import { Produtor } from '../models/produtor.model';
 export class ProdutorService {
 
   base_url: string = 'http://localhost:3001/produtor'
+  base_url_endereco: string = 'http://localhost:3001/endereco'
 
   produtores: Produtor[] = [
     { id: 1, nome: 'Alberto', cpf: '60' },
@@ -29,12 +31,16 @@ export class ProdutorService {
     return this.http.get<Produtor>(url)
   }
 
-  post(): void {
-
+  post(produtor: Produtor): Observable<Produtor> {
+    return this.http.post<Produtor>(this.base_url, produtor)
   }
 
   pull(): void {
 
+  }
+
+  postEndereco(endereco: Endereco): Observable<Endereco> {
+    return this.http.post<Endereco>(this.base_url_endereco, endereco)
   }
 
 }

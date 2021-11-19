@@ -1,15 +1,20 @@
 .page {
-    height: 100%;
+    min-height: 100%;
     display: flex;
-    flex: 0 0 auto ;
 }
 
 .nav {
-    width: 15%;
+    width: 270px;
+    height: inherit;
+    max-height: inherit;
+    background-color: #258336;
+    color: #fff;
+    padding: 1rem .5rem;
+    margin-right: 2rem;
 }
 
 .content {
     padding: 2rem;
-    width: 80%;
+    width: 800px;
 }
 

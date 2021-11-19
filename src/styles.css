@@ -15,9 +15,16 @@ a {
     color: #fff;
 }
 
+/* Components */
+
 .regular-btn {
     width: wrap;
     align-self: center;
+}
+
+.badge {
+    padding: 8px;
+    border-radius: 3px;
 }
 
 /* Colors */
@@ -95,9 +102,10 @@ a {
 
 .form-container {
     padding: 0;
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
     text-align: center;
+    height: wrap;
 }
 
 .form-container > .title {

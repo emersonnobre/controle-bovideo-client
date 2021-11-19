@@ -3,7 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Validations } from 'src/app/directives/validations';
 import { Endereco } from 'src/app/models/endereco.model';
+import { Municipio } from 'src/app/models/municipio.model';
 import { Produtor } from 'src/app/models/produtor.model';
+import { MunicipioService } from 'src/app/services/municipio.service';
+import { ProdutorService } from 'src/app/services/produtor.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-produtor-create',
@@ -12,20 +16,26 @@ import { Produtor } from 'src/app/models/produtor.model';
 })
 export class ProdutorCreateComponent implements OnInit {
 
-  addressAltForm: FormGroup
-  produtorForm: FormGroup
+  municipios: Municipio[]
+  address_alt_form: FormGroup
+  address_alt_validate: boolean = false
+  produtor_form: FormGroup
   submited: boolean = false
-  submitedAlt: boolean = false
-  novoProdutor: Produtor
-  novoEndereco: Endereco
+  submited_alt: boolean = false
+  novo_produtor: Produtor
+  novo_endereco: Endereco
+  novo_endereco_alt: Endereco
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private produtor_service: ProdutorService,
+    private share_service: SharedService,
+    private municipio_service: MunicipioService,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
-    this.produtorForm = this.formBuilder.group({
+    this.produtor_form = this.formBuilder.group({
       nome: ['', Validators.required],
       cpf: ['', Validators.compose([Validators.required, Validators.minLength(11), Validations.ValidaCpf])],
       rua: ['', Validators.required],
@@ -33,11 +43,13 @@ export class ProdutorCreateComponent implements OnInit {
       municipio: ['', Validators.required]
     })
 
-    this.addressAltForm = this.formBuilder.group({
+    this.address_alt_form = this.formBuilder.group({
       rua_alt: ['', Validators.required],
       numero_alt: ['', Validators.compose([Validators.required, Validations.ValidaNumero])],
       municipio_alt: ['', Validators.required]
     })
+
+    this.municipio_service.getAll().subscribe(response => this.municipios = response)
   }
 
   toggleAltAddress(): void {
@@ -56,27 +68,43 @@ export class ProdutorCreateComponent implements OnInit {
   }
 
   submitAlternativeAddress(): void {
-    this.submitedAlt = true
-    if (!this.addressAltForm.valid) return
+    this.submited_alt = true
+    if (!this.address_alt_form.valid) return
+    this.address_alt_validate = true
+    document.getElementById('address-optional-added')
   }
 
   submit(): void {
     this.submited = true
-    if (!this.produtorForm.valid) return
-    const produtor_data = this.produtorForm.value
-    this.novoProdutor = {
+    if (!this.produtor_form.valid) return
+    const produtor_data = this.produtor_form.value
+    this.novo_produtor = {
       nome: produtor_data.nome,
       cpf: produtor_data.cpf
     }
-    this.novoEndereco = {
+    this.novo_endereco = {
       rua: produtor_data.rua,
       numero: produtor_data.numero,
       id_municipio: produtor_data.municipio,
       id_produtor: 1
     }
-
-    console.log('Produtor: ', this.novoProdutor)
-    console.log('Endereço: ', this.novoEndereco)
+    this.produtor_service.post(this.novo_produtor).subscribe(response => {
+      this.novo_endereco.id_produtor = response.id
+      this.produtor_service.postEndereco(this.novo_endereco).subscribe(response => {
+        this.router.navigate(['produtor'])
+        this.share_service.showMessage(JSON.stringify(response))
+      })
+      if (this.address_alt_validate) {
+        const endereco_alt_data = this.address_alt_form.value
+        this.novo_endereco_alt = {
+          rua: endereco_alt_data.rua_alt,
+          numero: endereco_alt_data.numero_alt,
+          id_municipio: endereco_alt_data.municipio_alt,
+          id_produtor: this.novo_endereco.id_produtor
+        }
+        this.produtor_service.postEndereco(this.novo_endereco_alt).subscribe(console.log)
+      }
+    })
   }
 
   cancel(): void {
