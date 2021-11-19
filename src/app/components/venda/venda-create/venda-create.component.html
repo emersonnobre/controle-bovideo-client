@@ -1,1 +1,42 @@
-<p>venda-create works!</p>
+<mat-card class="form-container">
+    <div class="title">
+        <h1>Cadastrar registro de venda</h1>
+    </div>
+    <form [formGroup]="venda_form">
+        <mat-form-field appearance="fill">
+            <mat-label>Quantidade</mat-label>
+            <input matInput type="text" formControlName="quantidade" name="quantidade">
+            <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Espécie</mat-label>
+            <mat-select formControlName="id_especie">
+              <mat-option *ngFor="let especie of especies" value="{{especie.id}}">{{especie.descricao}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Propriedade origem</mat-label>
+            <mat-select formControlName="id_propriedade_origem" #origem (selectionChange)="manageSelect(origem.value)">
+              <mat-option id="id_propriedade_origem" *ngFor="let propriedade of propriedades" value="{{propriedade.id}}">{{propriedade.nome}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Propriedade destino</mat-label>
+            <mat-select id="id_propriedade_destino" formControlName="id_propriedade_destino">
+              <mat-option *ngFor="let propriedade of propriedades_destino" value="{{propriedade.id}}">{{propriedade.nome}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Motivo da venda</mat-label>
+            <input matInput type="text" formControlName="motivo" name="motivo">
+        </mat-form-field>
+        <div class="button-group">
+            <button class="bgRed" mat-button (click)="cancel()">Cancelar</button>
+            <button type="submit" class="bgGreen" mat-button (click)="submit()">Cadastrar</button>
+        </div>
+    </form>
+</mat-card>
+

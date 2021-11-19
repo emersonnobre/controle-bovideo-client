@@ -19,6 +19,14 @@
     width: 100%;
 }
 
+#delete-address {
+    margin: 0 auto;
+}
+
+#delete-address:hover {
+    cursor: pointer;
+}
+
 .visible {
     display: block;
 }

@@ -12,6 +12,9 @@ import { RebanhoUpdateComponent } from './components/rebanho/rebanho-update/reba
 import { VacinacaoCreateComponent } from './components/vacinacao/vacinacao-create/vacinacao-create.component';
 import { VacinacaoReadComponent } from './components/vacinacao/vacinacao-read/vacinacao-read.component';
 import { VacinacaoUpdateComponent } from './components/vacinacao/vacinacao-update/vacinacao-update.component';
+import { VendaReadComponent } from './components/venda/venda-read/venda-read.component';
+import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
+import { VendaUpdateComponent } from './components/venda/venda-update/venda-update.component';
 
 const routes: Routes = [
   { path: "produtor", component: ProdutorReadComponent },
@@ -26,6 +29,9 @@ const routes: Routes = [
   { path: "vacinacao", component: VacinacaoReadComponent },
   { path: "vacinacao/create", component: VacinacaoCreateComponent },
   { path: "vacinacao/update/:id", component: VacinacaoUpdateComponent },
+  { path: "venda", component: VendaReadComponent },
+  { path: "venda/create", component: VendaCreateComponent },
+  { path: "venda/update/:id", component: VendaUpdateComponent },
 ];
 
 @NgModule({

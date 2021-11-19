@@ -1,5 +1,5 @@
 // Modules
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './modules/material/material.module'
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms'
+import { registerLocaleData } from '@angular/common';
+import localeBr from '@angular/common/locales/pt';
 
 // Components
 import { AppComponent } from './app.component';
@@ -26,6 +28,8 @@ import { VacinacaoUpdateComponent } from './components/vacinacao/vacinacao-updat
 import { VendaReadComponent } from './components/venda/venda-read/venda-read.component';
 import { VendaUpdateComponent } from './components/venda/venda-update/venda-update.component';
 import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
+
+registerLocaleData(localeBr, 'pt')
 
 @NgModule({
   declarations: [
@@ -56,7 +60,9 @@ import { VendaCreateComponent } from './components/venda/venda-create/venda-crea
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'pt'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

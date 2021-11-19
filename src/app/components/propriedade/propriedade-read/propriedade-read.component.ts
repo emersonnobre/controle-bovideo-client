@@ -5,6 +5,7 @@ import { Municipio } from 'src/app/models/municipio.model';
 import { Propriedade } from 'src/app/models/propriedade.model';
 import { MunicipioService } from 'src/app/services/municipio.service';
 import { PropriedadeService } from 'src/app/services/propriedade.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-propriedade-read',
@@ -21,6 +22,7 @@ export class PropriedadeReadComponent implements OnInit {
     private router: Router,
     private propriedade_service: PropriedadeService,
     private municipio_service: MunicipioService,
+    private shared_service: SharedService,
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +52,13 @@ export class PropriedadeReadComponent implements OnInit {
 
   redirectToCreate(): void {
     this.router.navigate(['propriedade/create'])
+  }
+
+  delete(id: number) {
+    this.propriedade_service.delete(id).subscribe(() => {
+      this.shared_service.showMessage('Propriedadade deletada')
+      setTimeout(() => window.location.reload(), 900)
+    })
   }
 
 }

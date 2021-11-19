@@ -12,12 +12,6 @@ export class ProdutorService {
   base_url: string = 'http://localhost:3001/produtor'
   base_url_endereco: string = 'http://localhost:3001/endereco'
 
-  produtores: Produtor[] = [
-    { id: 1, nome: 'Alberto', cpf: '60' },
-    { id: 2, nome: 'Carlito', cpf: '30' },
-    { id: 3, nome: 'Joãotop', cpf: '50' },
-  ]
-
   constructor(
     private http: HttpClient
   ) { }
@@ -31,6 +25,11 @@ export class ProdutorService {
     return this.http.get<Produtor>(url)
   }
 
+  getById(id: number): Observable<Produtor> {
+    const url = `${this.base_url}/${id}`
+    return this.http.get<Produtor>(url)
+  }
+
   post(produtor: Produtor): Observable<Produtor> {
     return this.http.post<Produtor>(this.base_url, produtor)
   }
@@ -39,8 +38,33 @@ export class ProdutorService {
 
   }
 
+  delete(id: number): Observable<any> {
+    const url = `${this.base_url}/${id}`
+    this.getEnderecoByIdProdutor(id).subscribe(response => {
+      console.log(response)
+      if (response.length == 0) console.log('Sem endereços')
+      else {
+        response.forEach(endereco => this.deleteEndereco(endereco.id).subscribe(() => {
+          console.log('Endereço excluído')
+        }))
+      }
+    })
+    return this.http.delete<any>(url)
+  }
+
   postEndereco(endereco: Endereco): Observable<Endereco> {
     return this.http.post<Endereco>(this.base_url_endereco, endereco)
+  }
+
+  getEnderecoByIdProdutor(id_produtor: number): Observable<Endereco[]> {
+    return this.http.get<Endereco[]>(this.base_url_endereco, {
+      params: {'id_produtor': id_produtor}
+    })
+  }
+
+  deleteEndereco(id: number): Observable<any> {
+    const url = `${this.base_url_endereco}/${id}`
+    return this.http.delete<any>(url)
   }
 
 }

@@ -1,1 +1,29 @@
-<p>vacinacao-read works!</p>
+<button mat-raised-button class="bgGreen" (click)="redirectToCreate()">Cadastrar vacinação</button>
+
+<table class="dataTable" mat-table [dataSource]="data_source">
+    <ng-container matColumnDef="data_vacina">
+        <th mat-header-cell *matHeaderCellDef> Data </th>
+        <td mat-cell *matCellDef="let vacinacao"> {{vacinacao.data_vacina | date}} </td>
+    </ng-container>
+    <ng-container matColumnDef="quantidade">
+        <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+        <td mat-cell *matCellDef="let vacinacao"> {{vacinacao.quantidade}} </td>
+    </ng-container>
+    <ng-container matColumnDef="id_especie">
+        <th mat-header-cell *matHeaderCellDef> Espécie </th>
+        <td mat-cell *matCellDef="let vacinacao"> {{vacinacao.id_especie}} </td>
+    </ng-container>
+    <ng-container matColumnDef="id_propriedade">
+        <th mat-header-cell *matHeaderCellDef> Propriedade </th>
+        <td mat-cell *matCellDef="let vacinacao"> {{vacinacao.id_propriedade}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Ações </th>
+        <td mat-cell *matCellDef="let vacinacao" class="icons">
+            <a class="action-button" (click)="redirectToUpdate(vacinacao.id)"><mat-icon class="edit">edit</mat-icon></a>
+            <a class="action-button" (click)="delete(vacinacao.id)"><mat-icon class="delete">delete</mat-icon></a>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayed_columns"></tr>
+    <tr mat-row *matRowDef="let rebanho; columns: displayed_columns;"></tr>
+</table>

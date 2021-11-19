@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EspecieService } from 'src/app/services/especie.service';
 import { RebanhoService } from 'src/app/services/rebanho.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-rebanho-read',
@@ -15,7 +16,7 @@ export class RebanhoReadComponent implements OnInit {
 
   constructor(
     private rebanho_service: RebanhoService,
-    private especie_service: EspecieService,
+    private shared_service: SharedService,
     private router: Router,
   ) { }
 
@@ -25,6 +26,17 @@ export class RebanhoReadComponent implements OnInit {
 
   redirectToCreate(): void {
     this.router.navigate(['rebanho/create'])
+  }
+
+  redirectToUpdate(id: number): void {
+    this.router.navigate([`rebanho/update/${id}`])
+  }
+
+  delete(id: number) {
+    this.rebanho_service.delete(id).subscribe(() => {
+      this.shared_service.showMessage('Rebanho deletado')
+      setTimeout(() => window.location.reload(), 900)
+    })
   }
 
 }

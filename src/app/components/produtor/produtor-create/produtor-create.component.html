@@ -38,7 +38,8 @@
                 </mat-form-field>
             </div>
             <span id="address-optional-added" class="badge bgGreen hidden">Endereço opcional adicionado</span>
-             <!-- FORMULARIO PARA ENVIO DE ENDEREÇO ALTERNATIVO  -->
+            <mat-icon id="delete-address" class="delete hidden" (click)="deleteAlternativeAddress()">delete</mat-icon>
+            <!-- FORMULARIO PARA ENVIO DE ENDEREÇO ALTERNATIVO  -->
             <form [formGroup]="address_alt_form" style="width: 100%; margin-bottom: 1rem;" class="hidden" id="endereco-opcional"> 
                 <h2>Endereço alternativo</h2>
                 <mat-form-field appearance="fill">

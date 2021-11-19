@@ -29,7 +29,7 @@ export class ProdutorCreateComponent implements OnInit {
   constructor(
     private router: Router,
     private produtor_service: ProdutorService,
-    private share_service: SharedService,
+    private shared_service: SharedService,
     private municipio_service: MunicipioService,
     private formBuilder: FormBuilder,
   ) { }
@@ -71,7 +71,24 @@ export class ProdutorCreateComponent implements OnInit {
     this.submited_alt = true
     if (!this.address_alt_form.valid) return
     this.address_alt_validate = true
-    document.getElementById('address-optional-added')
+    let formDisplay = document.getElementById('endereco-opcional').classList
+    let badge_notification = document.getElementById('address-optional-added').classList
+    let button_cancel = document.getElementById('cancel-address').classList
+    let button_delete = document.getElementById('delete-address').classList
+    formDisplay.toggle('hidden')
+    badge_notification.toggle('hidden')
+    button_cancel.add('hidden')
+    button_delete.toggle('hidden')
+  }
+
+  deleteAlternativeAddress(): void {
+    this.address_alt_validate = false
+    let badge_notification = document.getElementById('address-optional-added').classList
+    let button_delete = document.getElementById('delete-address').classList
+    let button_add = document.getElementById('add-address').classList
+    badge_notification.toggle('hidden')
+    button_delete.toggle('hidden')
+    button_add.toggle('hidden')
   }
 
   submit(): void {
@@ -92,7 +109,7 @@ export class ProdutorCreateComponent implements OnInit {
       this.novo_endereco.id_produtor = response.id
       this.produtor_service.postEndereco(this.novo_endereco).subscribe(response => {
         this.router.navigate(['produtor'])
-        this.share_service.showMessage(JSON.stringify(response))
+        this.shared_service.showMessage(JSON.stringify(response))
       })
       if (this.address_alt_validate) {
         const endereco_alt_data = this.address_alt_form.value

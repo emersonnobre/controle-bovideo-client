@@ -1,1 +1,75 @@
-<p>produtor-update works!</p>
+<mat-card class="form-container">
+    <div class="title">
+        <h1>Atualizar produtor</h1>
+    </div>
+    <form id="produtorForm" [formGroup]="produtor_form">
+        <div class="personalInfo">
+            <h2>Informações pessoais</h2>
+            <mat-form-field appearance="fill">
+                <mat-label>Nome do produtor</mat-label>
+                <input matInput type="text" formControlName="nome" name="nome">
+                <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>CPF (somente números)</mat-label>
+                <input matInput type="text" formControlName="cpf" name="cpf" maxlength="11">
+                <mat-error *ngIf="submited">CPF inválido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="address">
+            <h2>Endereço obrigatório</h2>
+            <mat-form-field appearance="fill">
+                <mat-label>Rua</mat-label>
+                <input formControlName="rua" matInput type="text" name="rua">
+                <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+            </mat-form-field>
+            <div class="flex">
+                <mat-form-field appearance="fill">
+                    <mat-label>Número</mat-label>
+                    <input formControlName="numero" matInput type="text" name="numero" maxlength="5">
+                    <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Município</mat-label>
+                    <mat-select formControlName="municipio">
+                      <mat-option *ngFor="let municipio of municipios" value="{{municipio.id}}">{{municipio.descricao}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
+                </mat-form-field>
+            </div>
+            <span id="address-optional-added" class="badge bgGreen hidden">Endereço opcional adicionado</span>
+            <mat-icon id="delete-address" class="delete hidden" (click)="deleteAlternativeAddress()">delete</mat-icon>
+            <!-- FORMULARIO PARA ENVIO DE ENDEREÇO ALTERNATIVO  -->
+            <form [formGroup]="address_alt_form" style="width: 100%; margin-bottom: 1rem;" class="hidden" id="endereco-opcional"> 
+                <h2>Endereço alternativo</h2>
+                <mat-form-field appearance="fill">
+                    <mat-label>Rua</mat-label>
+                    <input formControlName="rua_alt" matInput type="text" name="rua_alt">
+                    <mat-error *ngIf="submited_alt">Este campo não pode ser vazio</mat-error>
+                </mat-form-field>
+                <div style="display: flex; gap: 10px; flex-direction: column;">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Número</mat-label>
+                        <input formControlName="numero_alt" matInput type="text" name="numero_alt" maxlength="5">
+                        <mat-error *ngIf="submited_alt">Este campo não pode ser vazio</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Município</mat-label>
+                        <mat-select formControlName="municipio_alt">
+                          <mat-option *ngFor="let municipio of municipios" value="{{municipio.id}}">{{municipio.descricao}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="submited_alt">Este campo não pode ser vazio</mat-error>
+                    </mat-form-field>
+                </div>
+                <button mat-button type="submit" class="bgGreen" (click)="submitAlternativeAddress()">Adicionar <mat-icon>add</mat-icon></button>
+            </form>
+        </div>
+        <button type="button" id="cancel-address" class="regular-btn hidden" mat-button (click)="toggleAltAddress()">Cancelar endereço alternativo</button>
+        <button type="button" id="add-address" class="regular-btn" mat-button (click)="toggleAltAddress()">Novo endereço alternativo</button>
+        <div class="button-group">
+            <button class="bgRed" mat-button (click)="cancel()">Cancelar</button>
+            <button type="submit" class="bgGreen" mat-button (click)="submit()">Cadastrar</button>
+        </div>
+    </form>
+</mat-card> 
+
