@@ -38,7 +38,9 @@
                 </mat-form-field>
             </div>
             <span id="address-optional-added" class="badge bgGreen hidden">Endereço opcional adicionado</span>
-            <mat-icon id="delete-address" class="delete hidden" (click)="deleteAlternativeAddress()">delete</mat-icon>
+            <div id="delete-address" class="hidden" (click)="deleteAlternativeAddress()">
+                <mat-icon class="delete">delete</mat-icon><span>Deletar endereço alternativo</span> 
+            </div>
             <!-- FORMULARIO PARA ENVIO DE ENDEREÇO ALTERNATIVO  -->
             <form [formGroup]="address_alt_form" style="width: 100%; margin-bottom: 1rem;" class="hidden" id="endereco-opcional"> 
                 <h2>Endereço alternativo</h2>
@@ -64,8 +66,8 @@
                 <button mat-button type="submit" class="bgGreen" (click)="submitAlternativeAddress()">Adicionar <mat-icon>add</mat-icon></button>
             </form>
         </div>
-        <button type="button" id="cancel-address" class="regular-btn hidden" mat-button (click)="toggleAltAddress()">Cancelar endereço alternativo</button>
-        <button type="button" id="add-address" class="regular-btn" mat-button (click)="toggleAltAddress()">Novo endereço alternativo</button>
+        <button type="button" id="cancel-address" class="regular-btn hidden" mat-button (click)="toggleAlternativeAddress()">Cancelar endereço alternativo</button>
+        <button type="button" id="add-address" class="regular-btn" mat-button (click)="toggleAlternativeAddress()">Novo endereço alternativo</button>
         <div class="button-group">
             <button class="bgRed" mat-button (click)="cancel()">Cancelar</button>
             <button type="submit" class="bgGreen" mat-button (click)="submit()">Cadastrar</button>

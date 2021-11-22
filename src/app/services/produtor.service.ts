@@ -34,8 +34,9 @@ export class ProdutorService {
     return this.http.post<Produtor>(this.base_url, produtor)
   }
 
-  pull(): void {
-
+  put(produtor: Produtor): Observable<Produtor> {
+    const url = `${this.base_url}/${produtor.id}`
+    return this.http.put<Produtor>(url, produtor)
   }
 
   delete(id: number): Observable<any> {
@@ -62,9 +63,26 @@ export class ProdutorService {
     })
   }
 
+  getEnderecoAlternativeByIdProdutor(id_produtor: number): Promise<Endereco> {
+    return new Promise((resolve, reject) => {
+      this.getEnderecoByIdProdutor(id_produtor).subscribe(response => {
+        if (response.length < 2) resolve(null)
+        else {
+          const endereco_alternativo = response.find(endereco => endereco.principal == false)
+          resolve(endereco_alternativo)
+        }
+      })
+    })
+  }
+
   deleteEndereco(id: number): Observable<any> {
     const url = `${this.base_url_endereco}/${id}`
     return this.http.delete<any>(url)
+  }
+
+  putEndereco(endereco: Endereco): Observable<Endereco> {
+    const url = `${this.base_url_endereco}/${endereco.id}`
+    return this.http.put<Endereco>(url, endereco)
   }
 
 }

@@ -20,7 +20,11 @@
 }
 
 #delete-address {
-    margin: 0 auto;
+    margin: 20px auto;
+}
+
+#delete-address span {
+    vertical-align: top;
 }
 
 #delete-address:hover {

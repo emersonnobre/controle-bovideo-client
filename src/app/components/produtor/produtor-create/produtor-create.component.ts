@@ -103,7 +103,8 @@ export class ProdutorCreateComponent implements OnInit {
       rua: produtor_data.rua,
       numero: produtor_data.numero,
       id_municipio: produtor_data.municipio,
-      id_produtor: 1
+      id_produtor: 1,
+      principal: true
     }
     this.produtor_service.post(this.novo_produtor).subscribe(response => {
       this.novo_endereco.id_produtor = response.id
@@ -117,7 +118,8 @@ export class ProdutorCreateComponent implements OnInit {
           rua: endereco_alt_data.rua_alt,
           numero: endereco_alt_data.numero_alt,
           id_municipio: endereco_alt_data.municipio_alt,
-          id_produtor: this.novo_endereco.id_produtor
+          id_produtor: this.novo_endereco.id_produtor,
+          principal: false
         }
         this.produtor_service.postEndereco(this.novo_endereco_alt).subscribe(console.log)
       }

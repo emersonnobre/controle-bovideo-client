@@ -116,10 +116,6 @@ th.mat-header-cell {
     margin-bottom: .8rem;
 }
 
-.mat-form-field input {
-    width: 100px;
-}
-
 .form-container {
     padding: 0;
     width: 60%;
@@ -135,12 +131,13 @@ th.mat-header-cell {
     color: #fff;
 }
 
-.form-container > .title > h1 {
-    vertical-align: middle;
+.title > h1 {
+    margin: 0;
+    padding: 10px;
 }
 
 .form-container > form {
-    width: 70%;
+    width: 80%;
     margin: 2.2rem auto !important;
     display: flex;
     flex-direction: column;
