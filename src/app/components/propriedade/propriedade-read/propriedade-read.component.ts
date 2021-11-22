@@ -1,6 +1,7 @@
 import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { verificaNumero } from 'src/app/directives/utils';
 import { Municipio } from 'src/app/models/municipio.model';
 import { Propriedade } from 'src/app/models/propriedade.model';
 import { MunicipioService } from 'src/app/services/municipio.service';
@@ -16,7 +17,14 @@ export class PropriedadeReadComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'inscricao_estadual', 'municipio','actions']
   dataSource: any[] = []
+
   municipios: Municipio[] = []
+  propriedade: Propriedade = {
+    nome: '',
+    inscricao_estadual: '',
+    id_municipio: 0,
+    id_produtor: 0
+  }
 
   constructor(
     private router: Router,
@@ -27,7 +35,7 @@ export class PropriedadeReadComponent implements OnInit {
 
   ngOnInit(): void {
     this.municipio_service.getAll().subscribe(response => this.municipios = response)
-    this.propriedade_service.getAll().subscribe(response => this.dataSource = response)
+    this.loadAllPropriedades()
     // Carregando o nome dos municípios pelo id obtido
     setTimeout(() => {
       this.dataSource.forEach(propriedade => {
@@ -35,6 +43,10 @@ export class PropriedadeReadComponent implements OnInit {
         propriedade.id_municipio = nome_municipio.descricao
       })
     }, 2000)
+  }
+
+  loadAllPropriedades(): void {
+    this.propriedade_service.getAll().subscribe(response => this.dataSource = response)
   }
 
   loadMunicipioName(id: number) {
@@ -54,10 +66,37 @@ export class PropriedadeReadComponent implements OnInit {
     this.router.navigate(['propriedade/create'])
   }
 
+  redirectToUpdate(id: number): void {
+    this.router.navigate([`propriedade/update/${id}`])
+  }
+
+  redirectToInfo(id: number): void {
+    this.router.navigate([`propriedade/info/${id}`])
+  }
+
   delete(id: number) {
     this.propriedade_service.delete(id).subscribe(() => {
       this.shared_service.showMessage('Propriedadade deletada')
       setTimeout(() => window.location.reload(), 900)
+    })
+  }
+
+  searchPropriedade(): void {
+    if (this.propriedade.inscricao_estadual.length === 0) {
+      this.loadAllPropriedades()
+      return this.shared_service.showMessage('Informe a inscrição estadual completa', true)
+    }
+    if (!verificaNumero(Array.from(this.propriedade.inscricao_estadual))) {
+      this.loadAllPropriedades()
+      return this.shared_service.showMessage('Somente números', true)
+    }
+    this.propriedade_service.getByInscricao(this. propriedade.inscricao_estadual).subscribe(response => {
+      if (response[0]) {
+        this.dataSource = [response[0]]
+      } else {
+        this.loadAllPropriedades()
+        this.shared_service.showMessage('Nenhuma propriedade encontrada', true)
+      }
     })
   }
 

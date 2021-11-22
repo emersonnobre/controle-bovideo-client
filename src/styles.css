@@ -21,11 +21,23 @@ i {
     font-size: 1.4rem;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .i {
     margin-right: 5px;
     padding: 0;
     height: 2rem;
     filter: brightness(100%);
+}
+
+ul {
+    list-style: none;
+}
+
+h3 {
+    font-weight: bold !important;
 }
 
 /* Components */
@@ -39,9 +51,42 @@ i {
     cursor: pointer;
 }
 
+.mat-raised-button {
+    margin-bottom: 2rem !important;
+}
+
 .badge {
     padding: 8px;
     border-radius: 3px;
+}
+
+#span-name {
+    display: block;
+}
+
+.search-container {
+    width: 100%;
+    padding: 8px;
+    background-color: #258336;
+}
+
+.search-container > input, .search-container > button {
+    height: 30px;
+    outline: none;
+    border: none;
+    padding: 5px;
+}
+
+.search-container button {
+    opacity: .7;
+}
+
+.search-container button:hover {
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
 }
 
 /* Colors */
@@ -68,11 +113,14 @@ i {
     color: #dc3545;
 }
 
+.info {
+    color: #0069de;
+}
+
 /* Table styles */
 
 .mat-table {
     width: 100%;
-    margin: 2rem 0;
 }
 
 .mat-row .mat-cell {
@@ -132,6 +180,7 @@ th.mat-header-cell {
 }
 
 .title > h1 {
+    text-align: center;
     margin: 0;
     padding: 10px;
 }
@@ -167,4 +216,17 @@ th.mat-header-cell {
     border-left: none;
     margin-left: -.5px;
     border-radius: 0;
+}
+
+/* Cards */
+
+.info-section {
+    width: 80%;
+    margin: 0 auto;
+    height: fit-content;
+    padding: 2rem;
+}
+
+.info-section > .section {
+    margin-bottom: 2rem;
 }

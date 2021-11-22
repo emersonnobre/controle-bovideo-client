@@ -27,8 +27,8 @@ export class VacinacaoReadComponent implements OnInit {
     this.router.navigate(['vacinacao/create'])
   }
 
-  redirectToUpdate(id: number): void {
-    this.router.navigate([`vacinacao/update/${id}`])
+  redirectToInfo(id: number): void {
+    this.router.navigate([`vacinacao/info/${id}`])
   }
 
   delete(id: number) {

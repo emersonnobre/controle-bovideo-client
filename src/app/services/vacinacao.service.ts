@@ -20,6 +20,11 @@ export class VacinacaoService {
     return this.http.get<Vacinacao[]>(this.base_url)
   }
 
+  getById(id: number): Observable<Vacinacao> {
+    const url = `${this.base_url}/${id}`
+    return this.http.get<Vacinacao>(url)
+  }
+
   getAllVacina(): Observable<Vacina[]> {
     return this.http.get<Vacina[]>(this.base_url_vacina)
   }

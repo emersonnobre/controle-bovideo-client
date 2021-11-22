@@ -21,6 +21,12 @@ export class RebanhoService {
   getByPropriedade(): void {
   }
 
+  getById(id: number): Observable<Rebanho> {
+    const url = `${this.base_url}/${id}`
+    return this.http.get<Rebanho>(url)
+  } 
+
+
   post(rebanho: Rebanho): Observable<Rebanho> {
     return this.http.post<Rebanho>(this.base_url, rebanho)
   }

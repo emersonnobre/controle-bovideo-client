@@ -27,8 +27,8 @@ export class VendaReadComponent implements OnInit {
     this.router.navigate(['venda/create'])
   }
 
-  redirectToUpdate(id: number): void {
-    this.router.navigate([`venda/update/${id}`])
+  redirectToInfo(id: number): void {
+    this.router.navigate([`venda/info/${id}`])
   }
 
   delete(id: number) {

@@ -23,8 +23,18 @@ export class PropriedadeService {
     return this.http.get<Propriedade>(url)
   }
 
+  getById(id: number): Observable<Propriedade> {
+    const url = `${this.base_url}/${id}`
+    return this.http.get<Propriedade>(url)
+  }
+
   post(propriedade: Propriedade): Observable<Propriedade> {
     return this.http.post<Propriedade>(this.base_url, propriedade)
+  }
+
+  put(propriedade: Propriedade): Observable<Propriedade> {
+    const url = `${this.base_url}/${propriedade.id}`
+    return this.http.put<Propriedade>(url, propriedade)
   }
 
   delete(id: number): Observable<any> {

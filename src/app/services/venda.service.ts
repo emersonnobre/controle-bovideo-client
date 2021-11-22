@@ -17,6 +17,11 @@ export class VendaService {
   getAll(): Observable<Venda[]> {
     return this.http.get<Venda[]>(this.base_url)
   }
+
+  getById(id: number): Observable<Venda> {
+    const url = `${this.base_url}/${id}`
+    return this.http.get<Venda>(url)
+  }
   
   post(venda: Venda): Observable<Venda> {
     return this.http.post<Venda>(this.base_url, venda)

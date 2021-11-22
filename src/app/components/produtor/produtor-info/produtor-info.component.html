@@ -1,0 +1,47 @@
+<mat-card>
+    <div class="title">
+        <h1>Informações do produtor</h1>
+    </div>
+    <div class="info-section">
+        <h2>Informações pessoais</h2>
+        <div class="section">
+            <ul>
+                <li>
+                    Nome: {{produtor.nome}}
+                </li>
+                <li>
+                    CPF: {{produtor.cpf}}
+                </li>
+            </ul>
+        </div>
+        <h2>Endereço(s)</h2>
+        <div class="section">
+            <h3>Principal</h3>
+            <ul>
+                <li>
+                    Rua: {{endereco.rua}}
+                </li>
+                <li>
+                    Número: {{endereco.numero}}
+                </li>
+                <li>
+                    Município: {{endereco.id_municipio}}
+                </li>
+            </ul>
+        </div>
+        <div id="endereco-alternativo" class="section hidden">
+            <h3>Secundário</h3>
+            <ul>
+                <li>
+                    Rua: {{endereco_alternativo.rua}}
+                </li>
+                <li>
+                    Número: {{endereco_alternativo.numero}}
+                </li>
+                <li>
+                    Município: {{endereco_alternativo.id_municipio}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</mat-card>

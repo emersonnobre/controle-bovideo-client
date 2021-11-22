@@ -28,10 +28,10 @@ export class RebanhoReadComponent implements OnInit {
     this.router.navigate(['rebanho/create'])
   }
 
-  redirectToUpdate(id: number): void {
-    this.router.navigate([`rebanho/update/${id}`])
+  redirectToInfo(id: number): void {
+    this.router.navigate([`rebanho/info/${id}`])
   }
-
+  
   delete(id: number) {
     this.rebanho_service.delete(id).subscribe(() => {
       this.shared_service.showMessage('Rebanho deletado')

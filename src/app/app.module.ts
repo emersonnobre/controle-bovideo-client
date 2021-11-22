@@ -18,16 +18,17 @@ import { PropriedadeReadComponent } from './components/propriedade/propriedade-r
 import { RebanhoReadComponent } from './components/rebanho/rebanho-read/rebanho-read.component';
 import { ProdutorCreateComponent } from './components/produtor/produtor-create/produtor-create.component';
 import { RebanhoCreateComponent } from './components/rebanho/rebanho-create/rebanho-create.component';
-import { RebanhoUpdateComponent } from './components/rebanho/rebanho-update/rebanho-update.component';
 import { PropriedadeCreateComponent } from './components/propriedade/propriedade-create/propriedade-create.component';
 import { PropriedadeUpdateComponent } from './components/propriedade/propriedade-update/propriedade-update.component';
 import { ProdutorUpdateComponent } from './components/produtor/produtor-update/produtor-update.component';
 import { VacinacaoReadComponent } from './components/vacinacao/vacinacao-read/vacinacao-read.component';
 import { VacinacaoCreateComponent } from './components/vacinacao/vacinacao-create/vacinacao-create.component';
-import { VacinacaoUpdateComponent } from './components/vacinacao/vacinacao-update/vacinacao-update.component';
 import { VendaReadComponent } from './components/venda/venda-read/venda-read.component';
-import { VendaUpdateComponent } from './components/venda/venda-update/venda-update.component';
 import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
+import { ProdutorInfoComponent } from './components/produtor/produtor-info/produtor-info.component';
+import { PropriedadeInfoComponent } from './components/propriedade/propriedade-info/propriedade-info.component';
+import { VacinacaoInfoComponent } from './components/vacinacao/vacinacao-info/vacinacao-info.component';
+import { VendaInfoComponent } from './components/venda/venda-info/venda-info.component';
 
 registerLocaleData(localeBr, 'pt')
 
@@ -40,16 +41,17 @@ registerLocaleData(localeBr, 'pt')
     RebanhoReadComponent,
     ProdutorCreateComponent,
     RebanhoCreateComponent,
-    RebanhoUpdateComponent,
     PropriedadeCreateComponent,
     PropriedadeUpdateComponent,
     ProdutorUpdateComponent,
     VacinacaoReadComponent,
     VacinacaoCreateComponent,
-    VacinacaoUpdateComponent,
     VendaReadComponent,
-    VendaUpdateComponent,
     VendaCreateComponent,
+    ProdutorInfoComponent,
+    PropriedadeInfoComponent,
+    VacinacaoInfoComponent,
+    VendaInfoComponent,
   ],
   imports: [
     BrowserModule,

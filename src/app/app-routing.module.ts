@@ -8,30 +8,32 @@ import { PropriedadeReadComponent } from './components/propriedade/propriedade-r
 import { PropriedadeUpdateComponent } from './components/propriedade/propriedade-update/propriedade-update.component';
 import { RebanhoCreateComponent } from './components/rebanho/rebanho-create/rebanho-create.component';
 import { RebanhoReadComponent } from './components/rebanho/rebanho-read/rebanho-read.component';
-import { RebanhoUpdateComponent } from './components/rebanho/rebanho-update/rebanho-update.component';
 import { VacinacaoCreateComponent } from './components/vacinacao/vacinacao-create/vacinacao-create.component';
 import { VacinacaoReadComponent } from './components/vacinacao/vacinacao-read/vacinacao-read.component';
-import { VacinacaoUpdateComponent } from './components/vacinacao/vacinacao-update/vacinacao-update.component';
 import { VendaReadComponent } from './components/venda/venda-read/venda-read.component';
 import { VendaCreateComponent } from './components/venda/venda-create/venda-create.component';
-import { VendaUpdateComponent } from './components/venda/venda-update/venda-update.component';
+import { ProdutorInfoComponent } from './components/produtor/produtor-info/produtor-info.component';
+import { PropriedadeInfoComponent } from './components/propriedade/propriedade-info/propriedade-info.component';
+import { VacinacaoInfoComponent } from './components/vacinacao/vacinacao-info/vacinacao-info.component';
+import { VendaInfoComponent } from './components/venda/venda-info/venda-info.component';
 
 const routes: Routes = [
   { path: "produtor", component: ProdutorReadComponent },
   { path: "produtor/create", component: ProdutorCreateComponent },
   { path: "produtor/update/:id", component: ProdutorUpdateComponent },
+  { path: "produtor/info/:id", component: ProdutorInfoComponent },  
   { path: "propriedade", component: PropriedadeReadComponent },
   { path: "propriedade/create", component: PropriedadeCreateComponent },
   { path: "propriedade/update/:id", component: PropriedadeUpdateComponent },
+  { path: "propriedade/info/:id", component: PropriedadeInfoComponent },  
   { path: "rebanho", component: RebanhoReadComponent },
   { path: "rebanho/create", component: RebanhoCreateComponent },
-  { path: "rebanho/update/:id", component: RebanhoUpdateComponent },
   { path: "vacinacao", component: VacinacaoReadComponent },
   { path: "vacinacao/create", component: VacinacaoCreateComponent },
-  { path: "vacinacao/update/:id", component: VacinacaoUpdateComponent },
+  { path: "vacinacao/info/:id", component: VacinacaoInfoComponent },  
   { path: "venda", component: VendaReadComponent },
   { path: "venda/create", component: VendaCreateComponent },
-  { path: "venda/update/:id", component: VendaUpdateComponent },
+  { path: "venda/info/:id", component: VendaInfoComponent },  
 ];
 
 @NgModule({

@@ -1,5 +1,9 @@
 <button mat-raised-button class="bgGreen" (click)="redirectToCreate()">Cadastrar produtor</button>
 
+<form class="search-container">
+    <input type="text" maxlength="11" placeholder="Pesquisar pelo CPF" [(ngModel)]="produtor.cpf" name="cpf">
+    <button type="submit" (click)="searchProdutor()">Pesquisar</button>
+</form>
 <table class="dataTable" mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Nome </th>
@@ -12,6 +16,7 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let produtor" class="icons">
+            <a class="action-button" (click)="redirectToInfo(produtor.id)"><mat-icon class="info">info</mat-icon></a>
             <a class="action-button" (click)="redirectToUpdate(produtor.id)"><mat-icon class="edit">edit</mat-icon></a>
             <a class="action-button" (click)="delete(produtor.id)"><mat-icon class="delete">delete</mat-icon></a>
         </td>

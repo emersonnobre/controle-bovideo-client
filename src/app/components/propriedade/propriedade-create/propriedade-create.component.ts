@@ -72,7 +72,7 @@ export class PropriedadeCreateComponent implements OnInit {
       if (response[0]) {
         this.produtor_validate = true
         this.produtor = response[0]
-        span_name.innerHTML = `Nome: ${JSON.stringify(response[0].nome)}`
+        span_name.innerHTML = this.produtor.nome
         span_name.classList.remove('delete')
         span_name.classList.add('add')
         
