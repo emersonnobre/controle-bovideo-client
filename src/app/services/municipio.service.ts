@@ -8,7 +8,7 @@ import { Municipio } from '../models/municipio.model';
 })
 export class MunicipioService {
 
-  baseUrl: string = 'http://localhost:3001/municipio'
+  baseUrl: string = 'http://localhost:3000/api/municipio'
 
   constructor(
     private http: HttpClient

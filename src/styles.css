@@ -65,7 +65,7 @@ h3 {
 }
 
 .search-container {
-    width: 100%;
+    width: 80%;
     padding: 8px;
     background-color: #258336;
 }
@@ -87,6 +87,12 @@ h3 {
 
 .hidden {
     display: none;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
 }
 
 /* Colors */
@@ -120,7 +126,7 @@ h3 {
 /* Table styles */
 
 .mat-table {
-    width: 100%;
+    width: 80%;
 }
 
 .mat-row .mat-cell {
@@ -158,6 +164,8 @@ th.mat-header-cell {
 
 .mat-card {
     padding: 0 !important; 
+    min-width: 40%;
+    max-width: 40%;
 }
 
 .mat-form-field {

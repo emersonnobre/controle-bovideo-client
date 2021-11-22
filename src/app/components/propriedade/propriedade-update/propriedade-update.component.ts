@@ -24,9 +24,13 @@ export class PropriedadeUpdateComponent implements OnInit {
   produtor_validate: boolean = false
 
   municipios: Municipio[]
-  id_propriedade: number
   produtor: Produtor
-  propriedade: Propriedade
+  propriedade: Propriedade = {
+    nome: '',
+    inscricao_estadual: '',
+    id_municipio: 0,
+    id_produtor: 0
+  }
 
   span_name: HTMLElement
 
@@ -41,7 +45,7 @@ export class PropriedadeUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.id_propriedade = Number(this.activated_route.snapshot.paramMap.get('id'))
+    this.propriedade.inscricao_estadual = this.activated_route.snapshot.paramMap.get('id')
     this.span_name = document.getElementById('span-name')
 
     this.propriedade_form = this.form_builder.group({
@@ -53,13 +57,14 @@ export class PropriedadeUpdateComponent implements OnInit {
     this.municipio_service.getAll().subscribe(response => this.municipios = response)
 
     /* Carregando os valores obtidos na API da propriedade */
-    this.propriedade_service.getById(this.id_propriedade).subscribe(response => {
+    this.propriedade_service.getByInscricao(this.propriedade.inscricao_estadual).subscribe(response => {
       this.propriedade_form.patchValue({
         nome: response.nome,
         inscricao_estadual: response.inscricao_estadual,
         municipio: response.id_municipio
       })
       this.produtor_service.getById(response.id_produtor).subscribe(response => {
+        console.log(response)
         this.produtor_validate = true
         this.produtor = response
         this.search_produtor_input = response.cpf
@@ -74,7 +79,6 @@ export class PropriedadeUpdateComponent implements OnInit {
     if (!this.propriedade_form.valid) return
     const form_data = this.propriedade_form.value
     this.propriedade = {
-      id: this.id_propriedade,
       nome: form_data.nome,
       id_municipio: form_data.municipio,
       inscricao_estadual: form_data.inscricao_estadual,
@@ -94,9 +98,9 @@ export class PropriedadeUpdateComponent implements OnInit {
     }
     this.span_name.innerHTML = ''
     this.produtor_service.getByCpf(this.search_produtor_input).subscribe(response => {
-      if (response[0]) {
+      if (response.nome) {
         this.produtor_validate = true
-        this.produtor = response[0]
+        this.produtor = response
         this.span_name.innerHTML = this.produtor.nome
         this.span_name.classList.remove('delete')
         this.span_name.classList.add('add')

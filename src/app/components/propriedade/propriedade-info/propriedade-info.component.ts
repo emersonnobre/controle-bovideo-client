@@ -15,7 +15,6 @@ export class PropriedadeInfoComponent implements OnInit {
     inscricao_estadual: '',
     id_municipio: 0,
     id_produtor: 0,
-    id: 0
   }
 
   constructor(
@@ -25,12 +24,12 @@ export class PropriedadeInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.propriedade.id = Number(this.activated_route.snapshot.paramMap.get('id'))
+    this.propriedade.inscricao_estadual = this.activated_route.snapshot.paramMap.get('id')
     this.loadPropriedade()
   }
 
   loadPropriedade(): void {
-    this.propriedade_service.getById(this.propriedade.id).subscribe(response => this.propriedade = response)
+    this.propriedade_service.getByInscricao(this.propriedade.inscricao_estadual).subscribe(response => this.propriedade = response)
   }
 
 }

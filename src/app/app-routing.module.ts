@@ -16,8 +16,10 @@ import { ProdutorInfoComponent } from './components/produtor/produtor-info/produ
 import { PropriedadeInfoComponent } from './components/propriedade/propriedade-info/propriedade-info.component';
 import { VacinacaoInfoComponent } from './components/vacinacao/vacinacao-info/vacinacao-info.component';
 import { VendaInfoComponent } from './components/venda/venda-info/venda-info.component';
+import { HomeComponent } from './components/templates/home/home.component';
 
 const routes: Routes = [
+  { path: "", component: HomeComponent },
   { path: "produtor", component: ProdutorReadComponent },
   { path: "produtor/create", component: ProdutorCreateComponent },
   { path: "produtor/update/:id", component: ProdutorUpdateComponent },

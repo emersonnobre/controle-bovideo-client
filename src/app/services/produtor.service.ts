@@ -9,8 +9,8 @@ import { Produtor } from '../models/produtor.model';
 })
 export class ProdutorService {
 
-  base_url: string = 'http://localhost:3001/produtor'
-  base_url_endereco: string = 'http://localhost:3001/endereco'
+  base_url: string = 'http://localhost:3000/api/produtor'
+  base_url_endereco: string = 'http://localhost:3000/endereco'
 
   constructor(
     private http: HttpClient
@@ -26,7 +26,7 @@ export class ProdutorService {
   }
 
   getById(id: number): Observable<Produtor> {
-    const url = `${this.base_url}/${id}`
+    const url = `${this.base_url}?id=${id}`
     return this.http.get<Produtor>(url)
   }
 

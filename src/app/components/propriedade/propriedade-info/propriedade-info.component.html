@@ -1,23 +1,29 @@
-<mat-card>
-    <div class="title">
-        <h1>Informações da propriedade</h1>
-    </div>
-    <div class="info-section">
-        <div class="section">
-            <ul>
-                <li>
-                    Nome: {{propriedade.nome}}
-                </li>
-                <li>
-                    Inscrição estadual: {{propriedade.inscricao_estadual}}
-                </li>
-                <li>
-                    Município: {{propriedade.id_municipio}}
-                </li>
-                <li>
-                    Produtor: {{propriedade.id_produtor}}
-                </li>
-            </ul>
+<div class="info-container">
+    <mat-card>
+        <div class="title">
+            <h1>Informações da propriedade</h1>
         </div>
-    </div>
-</mat-card>
+        <div class="info-section">
+            <div class="section">
+                <ul>
+                    <li>
+                        Nome: {{propriedade.nome}}
+                    </li>
+                    <li>
+                        Inscrição estadual: {{propriedade.inscricao_estadual}}
+                    </li>
+                    <li>
+                        Município: {{propriedade.id_municipio}}
+                    </li>
+                    <li>
+                        Produtor: {{propriedade.id_produtor}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </mat-card>
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Animais">...</mat-tab>
+        <mat-tab label="Registros de vacinação">...</mat-tab>
+    </mat-tab-group>
+</div>

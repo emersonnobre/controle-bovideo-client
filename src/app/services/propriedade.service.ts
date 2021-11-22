@@ -8,7 +8,7 @@ import { Propriedade } from '../models/propriedade.model';
 })
 export class PropriedadeService {
 
-  base_url: string = 'http://localhost:3001/propriedade'
+  base_url: string = 'http://localhost:3000/api/propriedade'
 
   constructor(
     private http: HttpClient
@@ -19,13 +19,18 @@ export class PropriedadeService {
   }
 
   getByInscricao(inscricao_estadual: string): Observable<Propriedade> {
-    const url = `${this.base_url}?inscricao_estadual=${inscricao_estadual}`
+    const url = `${this.base_url}/${inscricao_estadual}`
     return this.http.get<Propriedade>(url)
   }
 
   getById(id: number): Observable<Propriedade> {
     const url = `${this.base_url}/${id}`
     return this.http.get<Propriedade>(url)
+  }
+
+  getByIdProdutor(id: number): Observable<Propriedade[]> {
+    const url = `${this.base_url}?id_produtor=${id}`
+    return this.http.get<Propriedade[]>(url)
   }
 
   post(propriedade: Propriedade): Observable<Propriedade> {

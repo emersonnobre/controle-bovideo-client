@@ -20,8 +20,8 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let propriedade" class="icons">
-            <a class="action-button" (click)="redirectToInfo(propriedade.id)"><mat-icon class="info">info</mat-icon></a>
-            <a class="action-button" (click)="redirectToUpdate(propriedade.id)"><mat-icon class="edit">edit</mat-icon></a>
+            <a class="action-button" (click)="redirectToInfo(propriedade.inscricao_estadual)"><mat-icon class="info">info</mat-icon></a>
+            <a class="action-button" (click)="redirectToUpdate(propriedade.inscricao_estadual)"><mat-icon class="edit">edit</mat-icon></a>
             <a class="action-button" (click)="delete(propriedade.id)"><mat-icon class="delete">delete</mat-icon></a>
         </td>
     </ng-container>

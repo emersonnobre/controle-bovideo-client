@@ -1,47 +1,79 @@
-<mat-card>
-    <div class="title">
-        <h1>Informações do produtor</h1>
-    </div>
-    <div class="info-section">
-        <h2>Informações pessoais</h2>
-        <div class="section">
-            <ul>
-                <li>
-                    Nome: {{produtor.nome}}
-                </li>
-                <li>
-                    CPF: {{produtor.cpf}}
-                </li>
-            </ul>
+<div class="info-container">
+    <mat-card>
+        <div class="title">
+            <h1>Informações do produtor</h1>
         </div>
-        <h2>Endereço(s)</h2>
-        <div class="section">
-            <h3>Principal</h3>
-            <ul>
-                <li>
-                    Rua: {{endereco.rua}}
-                </li>
-                <li>
-                    Número: {{endereco.numero}}
-                </li>
-                <li>
-                    Município: {{endereco.id_municipio}}
-                </li>
-            </ul>
+        <div class="info-section">
+            <h2>Informações pessoais</h2>
+            <div class="section">
+                <ul>
+                    <li>
+                        Nome: {{produtor.nome}}
+                    </li>
+                    <li>
+                        CPF: {{produtor.cpf}}
+                    </li>
+                </ul>
+            </div>
+            <h2>Endereço(s)</h2>
+            <div class="section">
+                <h3>Principal</h3>
+                <ul>
+                    <li>
+                        Rua: {{endereco.rua}}
+                    </li>
+                    <li>
+                        Número: {{endereco.numero}}
+                    </li>
+                    <li>
+                        Município: {{endereco.id_municipio}}
+                    </li>
+                </ul>
+            </div>
+            <div id="endereco-alternativo" class="section hidden">
+                <h3>Secundário</h3>
+                <ul>
+                    <li>
+                        Rua: {{endereco_alternativo.rua}}
+                    </li>
+                    <li>
+                        Número: {{endereco_alternativo.numero}}
+                    </li>
+                    <li>
+                        Município: {{endereco_alternativo.id_municipio}}
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div id="endereco-alternativo" class="section hidden">
-            <h3>Secundário</h3>
-            <ul>
-                <li>
-                    Rua: {{endereco_alternativo.rua}}
-                </li>
-                <li>
-                    Número: {{endereco_alternativo.numero}}
-                </li>
-                <li>
-                    Município: {{endereco_alternativo.id_municipio}}
-                </li>
-            </ul>
-        </div>
-    </div>
-</mat-card>
+    </mat-card>
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Propriedades">
+            <mat-list role="list">
+                <mat-list-item role ="listitem" *ngFor="let propriedade of propriedades">{{propriedade.nome}}</mat-list-item>
+            </mat-list>
+        </mat-tab>
+        <mat-tab label="Animais">
+            <mat-list role="list">
+                <mat-list-item role ="listitem" *ngFor="let rebanho of rebanhos">
+                    Quantidade: {{rebanho.quantidade}} | Espécie: {{rebanho.id_especie}} | Propriedade: {{rebanho.id_propriedade}}
+                </mat-list-item>
+            </mat-list>
+        </mat-tab>
+        <mat-tab label="Vendas">
+            <mat-list role="list">
+                <mat-list-item role ="listitem" *ngFor="let venda of vendas">
+                    Data: {{venda.data_venda | date}} | Motivo: {{venda.motivo}} | Espécie: {{venda.id_especie}}
+                </mat-list-item>
+            </mat-list>
+        </mat-tab>
+        <mat-tab label="Compras">
+            <mat-list role="list">
+                <mat-list-item role ="listitem" *ngFor="let compra of compras">
+                    Data: {{compra.data_venda | date}} | Motivo: {{compra.motivo}} | Espécie: {{compra.id_especie}}
+                </mat-list-item>
+            </mat-list>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
+

@@ -37,12 +37,7 @@ export class PropriedadeReadComponent implements OnInit {
     this.municipio_service.getAll().subscribe(response => this.municipios = response)
     this.loadAllPropriedades()
     // Carregando o nome dos municípios pelo id obtido
-    setTimeout(() => {
-      this.dataSource.forEach(propriedade => {
-        const nome_municipio = this.municipios.find(municipio => municipio.id == propriedade.id_municipio)
-        propriedade.id_municipio = nome_municipio.descricao
-      })
-    }, 2000)
+    
   }
 
   loadAllPropriedades(): void {
