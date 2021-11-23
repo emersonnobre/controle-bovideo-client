@@ -10,7 +10,7 @@ import { Produtor } from '../models/produtor.model';
 export class ProdutorService {
 
   base_url: string = 'http://localhost:3000/api/produtor'
-  base_url_endereco: string = 'http://localhost:3000/endereco'
+  base_url_endereco: string = 'http://localhost:3000/api/endereco'
 
   constructor(
     private http: HttpClient
@@ -58,9 +58,8 @@ export class ProdutorService {
   }
 
   getEnderecoByIdProdutor(id_produtor: number): Observable<Endereco[]> {
-    return this.http.get<Endereco[]>(this.base_url_endereco, {
-      params: {'id_produtor': id_produtor}
-    })
+    const url = `${this.base_url_endereco}?id_produtor=${id_produtor}`
+    return this.http.get<Endereco[]>(url)
   }
 
   getEnderecoAlternativeByIdProdutor(id_produtor: number): Promise<Endereco> {

@@ -9,7 +9,7 @@ import { PropriedadeService } from './propriedade.service';
 })
 export class VendaService {
 
-  base_url: string = 'http://localhost:3001/venda'
+  base_url: string = 'http://localhost:3000/api/venda'
 
   constructor(
     private http: HttpClient,

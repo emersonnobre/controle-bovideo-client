@@ -9,8 +9,8 @@ import { Vacinacao } from '../models/vacinacao.model';
 })
 export class VacinacaoService {
 
-  base_url: string = 'http://localhost:3001/vacinacao'
-  base_url_vacina: string = 'http://localhost:3001/vacina'
+  base_url: string = 'http://localhost:3000/api/vacina'
+  base_url_vacina: string = 'http://localhost:3000/api/vacina/tipo'
 
   constructor(
     private http: HttpClient,
@@ -21,11 +21,11 @@ export class VacinacaoService {
   }
 
   getById(id: number): Observable<Vacinacao> {
-    const url = `${this.base_url}/${id}`
+    const url = `${this.base_url}?id=${id}`
     return this.http.get<Vacinacao>(url)
   }
 
-  getAllVacina(): Observable<Vacina[]> {
+  getAllTipoVacina(): Observable<Vacina[]> {
     return this.http.get<Vacina[]>(this.base_url_vacina)
   }
 

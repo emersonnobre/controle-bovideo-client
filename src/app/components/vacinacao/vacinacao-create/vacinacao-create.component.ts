@@ -44,7 +44,7 @@ export class VacinacaoCreateComponent implements OnInit {
     })
     this.especie_service.getAll().subscribe(response => this.especies = response)
     this.propriedade_service.getAll().subscribe(response => this.propriedades = response)
-    this.vacinacao_service.getAllVacina().subscribe(response => this.vacinas = response)
+    this.vacinacao_service.getAllTipoVacina().subscribe(response => this.vacinas = response)
   }
 
   submit(): void {
