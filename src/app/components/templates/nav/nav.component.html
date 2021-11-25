@@ -5,7 +5,7 @@
     <ul class="navbar-list">
         <a routerLink="/produtor" class="item"><i class="material-icons">person</i>Produtor</a>
         <a routerLink="/propriedade" class="item"><i class="material-icons">house</i>Propriedade</a>
-        <a routerLink="/rebanho" class="item"><img class="i" src="/assets/icon/cow-icon.png" alt="cow_icon">Rebanho</a>
+        <a routerLink="/rebanho" class="item" (mouseover)="changeCowIconColor('green')" (mouseleave)="changeCowIconColor('white')"><img id="cow-icon" class="i" src="/assets/icon/cow.png" alt="cow_icon">Rebanho</a>
         <a routerLink="/vacinacao" class="item"><i class="fas fa-syringe"></i>Vacinação</a>
         <a routerLink="/venda" class="item"><i class="material-icons">attach_money</i>Venda</a>
     </ul>

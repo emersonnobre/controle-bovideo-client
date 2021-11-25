@@ -10,7 +10,7 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Inscrição estadual</mat-label>
-            <input formControlName="inscricao_estadual" matInput type="text">
+            <input formControlName="inscricao_estadual" matInput type="text" maxlength="9">
             <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">

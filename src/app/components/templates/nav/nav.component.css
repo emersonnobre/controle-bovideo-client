@@ -3,22 +3,24 @@
     flex-direction: column;
     list-style: none;
     width: 100%;
-    text-align: center;
+    text-align: left;
     gap: .8rem;
 }
 
 .navbar-list > .item {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 10px auto;
     padding: 5px;
-    border-radius: 5.4px;
+    height: 3rem;
     transition: background-color linear .15s;
+    border-bottom: 1px white solid;
 } 
 
 .navbar-list > .item:hover {
-    background-color: #258311;
+    background-color: #fff;
     cursor: pointer;
+    color: #258336;
 }
 
 .logo {
@@ -28,5 +30,5 @@
 }
 
 .logo > img {
-    width: 230px;
+    width: 80%;
 }

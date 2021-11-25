@@ -30,6 +30,7 @@ export class ProdutorUpdateComponent implements OnInit {
   id_produtor: number
   id_endereco: number
   id_endereco_alternativo: number
+  id_municipio: number = 1
 
   badge_notification:HTMLElement
   form_display: HTMLElement
@@ -86,9 +87,9 @@ export class ProdutorUpdateComponent implements OnInit {
         this.id_endereco = response[0].id
         this.produtor_form.patchValue({
           rua: response[0].rua,
-          numero: response[0].numero,
-          municipio: response[0].id_municipio
+          numero: response[0].numero
         })
+        this.produtor_form.get('municipio').setValue(response[0].id_municipio)
       } else {
         this.tinha_endereco_alternativo = true
         this.form_display.classList.toggle('hidden')
@@ -101,7 +102,7 @@ export class ProdutorUpdateComponent implements OnInit {
             this.produtor_form.patchValue({
               rua: endereco.rua,
               numero: endereco.numero,
-              municipio: endereco.id_municipio
+              municipio: 1
             })
           } else {
             this.id_endereco_alternativo = endereco.id

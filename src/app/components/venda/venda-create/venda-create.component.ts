@@ -62,8 +62,8 @@ export class VendaCreateComponent implements OnInit {
     console.info(this.nova_venda)
     this.venda_service.post(this.nova_venda).subscribe(response => {
       this.router.navigate(['venda'])
-      this.shared_service.showMessage(JSON.stringify(response))
-    })
+      this.shared_service.showMessage(response.toString())
+    }, err => this.shared_service.showMessage(err.error, true))
   }
 
   manageSelect(value: any): void {

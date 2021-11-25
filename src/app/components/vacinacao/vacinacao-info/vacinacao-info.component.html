@@ -12,13 +12,13 @@
                     Quantidade de animais: {{vacinacao.quantidade}}
                 </li>
                 <li>
-                    Espécie: {{vacinacao.id_especie}}
+                    Espécie: {{(especie | async)?.descricao}}
                 </li>
                 <li>
-                    Propriedade: {{vacinacao.id_propriedade}}
+                    Propriedade: {{(propriedade | async)?.nome}}
                 </li>
                 <li>
-                    Tipo da vacina: {{vacinacao.id_vacina}}
+                    Tipo da vacina: {{(vacina | async)?.descricao}}
                 </li>
             </ul>
         </div>

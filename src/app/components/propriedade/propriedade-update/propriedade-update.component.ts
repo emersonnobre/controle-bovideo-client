@@ -98,9 +98,9 @@ export class PropriedadeUpdateComponent implements OnInit {
     }
     this.span_name.innerHTML = ''
     this.produtor_service.getByCpf(this.search_produtor_input).subscribe(response => {
-      if (response.nome) {
+      if (response[0]) {
         this.produtor_validate = true
-        this.produtor = response
+        this.produtor = response[0]
         this.span_name.innerHTML = this.produtor.nome
         this.span_name.classList.remove('delete')
         this.span_name.classList.add('add')

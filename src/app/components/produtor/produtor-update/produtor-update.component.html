@@ -31,8 +31,8 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Município</mat-label>
-                    <mat-select formControlName="municipio">
-                      <mat-option *ngFor="let municipio of municipios" value="{{municipio.id}}">{{municipio.descricao}}</mat-option>
+                    <mat-select formControlName="municipio" name="municipio">
+                      <mat-option *ngFor="let municipio of municipios" [value]="municipio.id" >{{municipio.descricao}}</mat-option>
                     </mat-select>
                     <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
                 </mat-form-field>
@@ -58,7 +58,7 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Município</mat-label>
                         <mat-select formControlName="municipio_alt">
-                          <mat-option *ngFor="let municipio of municipios" value="{{municipio.id}}">{{municipio.descricao}}</mat-option>
+                          <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">{{municipio.descricao}}</mat-option>
                         </mat-select>
                         <mat-error *ngIf="submited_alt">Este campo não pode ser vazio</mat-error>
                     </mat-form-field>
@@ -70,7 +70,7 @@
         <button type="button" id="add-address" class="regular-btn" mat-button (click)="toggleAlternativeAddress()">Novo endereço alternativo</button>
         <div class="button-group">
             <button class="bgRed" mat-button (click)="cancel()">Cancelar</button>
-            <button type="submit" class="bgGreen" mat-button (click)="submit()">Atualizar</button>
+            <button type="submit" class="bgGreen" mat-button (click)="submit()" [disabled]="!form_display.classList.contains('hidden') && !address_alt_validate">Atualizar</button>
         </div>
     </form>
 </mat-card> 

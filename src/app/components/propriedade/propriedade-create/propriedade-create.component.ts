@@ -38,7 +38,7 @@ export class PropriedadeCreateComponent implements OnInit {
   ngOnInit(): void {
     this.propriedade_form = this.form_builder.group({
       nome: ['', Validators.compose([Validators.required])],
-      inscricao_estadual: ['', Validators.compose([Validators.required, Validations.ValidaNumero])],
+      inscricao_estadual: ['', Validators.compose([Validators.required, Validations.ValidaNumero, Validations.ValidarInscricaoEstadual])],
       municipio: ['', Validators.compose([Validators.required])]
     })
 
@@ -56,8 +56,8 @@ export class PropriedadeCreateComponent implements OnInit {
     }
     this.propriedade_service.post(this.propriedade).subscribe(response => {
       this.router.navigate(['propriedade'])
-      this.shared_service.showMessage(JSON.stringify(response))
-    })
+      this.shared_service.showMessage(response)
+    }, error => this.shared_service.showMessage(error.error, true))
   }
 
   searchProdutor(): void {
@@ -69,6 +69,7 @@ export class PropriedadeCreateComponent implements OnInit {
     const span_name = document.getElementById('span-name')
     span_name.innerHTML = ''
     this.produtor_service.getByCpf(this.search_produtor_input).subscribe(response => {
+      console.log(response)
       if (response[0]) {
         this.produtor_validate = true
         this.produtor = response[0]

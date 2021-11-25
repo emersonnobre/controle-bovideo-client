@@ -35,7 +35,7 @@ export class VacinacaoReadComponent implements OnInit {
     this.vacinacao_service.delete(id).subscribe(() => {
       this.shared_service.showMessage('Registro de vacinação deletado')
       setTimeout(() => window.location.reload(), 900)
-    })
+    }, error => this.shared_service.showMessage(error.error, true))
   }
 
 }

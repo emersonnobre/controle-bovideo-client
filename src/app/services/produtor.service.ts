@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Endereco } from '../models/endereco.model';
 import { Produtor } from '../models/produtor.model';
+import { catchError } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,8 @@ export class ProdutorService {
     return this.http.get<Produtor>(url)
   }
 
-  post(produtor: Produtor): Observable<Produtor> {
-    return this.http.post<Produtor>(this.base_url, produtor)
+  post(produtor: Produtor): Observable<any> {
+    return this.http.post<any>(this.base_url, produtor)
   }
 
   put(produtor: Produtor): Observable<Produtor> {

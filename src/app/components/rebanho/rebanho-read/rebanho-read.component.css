@@ -1,0 +1,10 @@
+.select-visualizacao {
+    display: block;
+    margin-bottom: 1rem;
+    font-family: 'Roboto';
+    outline: none;
+}
+
+.select-visualizacao > option {
+    outline: none;
+}

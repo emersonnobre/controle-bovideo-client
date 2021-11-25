@@ -19,12 +19,13 @@ export class PropriedadeService {
   }
 
   getByInscricao(inscricao_estadual: string): Observable<Propriedade> {
-    const url = `${this.base_url}/${inscricao_estadual}`
+    const url = `${this.base_url}?inscricao_estadual=${inscricao_estadual}`
     return this.http.get<Propriedade>(url)
   }
 
   getById(id: number): Observable<Propriedade> {
-    const url = `${this.base_url}/${id}`
+    const url = `${this.base_url}?id=${id}`
+    console.log(url)
     return this.http.get<Propriedade>(url)
   }
 
@@ -33,12 +34,12 @@ export class PropriedadeService {
     return this.http.get<Propriedade[]>(url)
   }
 
-  post(propriedade: Propriedade): Observable<Propriedade> {
-    return this.http.post<Propriedade>(this.base_url, propriedade)
+  post(propriedade: Propriedade): Observable<any> {
+    return this.http.post<any>(this.base_url, propriedade)
   }
 
   put(propriedade: Propriedade): Observable<Propriedade> {
-    const url = `${this.base_url}/${propriedade.id}`
+    const url = `${this.base_url}/${propriedade.inscricao_estadual}`
     return this.http.put<Propriedade>(url, propriedade)
   }
 

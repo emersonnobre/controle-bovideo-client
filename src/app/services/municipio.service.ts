@@ -22,4 +22,5 @@ export class MunicipioService {
     const url = `${this.baseUrl}/${id}`
     return this.http.get<Municipio>(url)
   }
+  
 }

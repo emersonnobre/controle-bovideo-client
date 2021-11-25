@@ -26,7 +26,7 @@
                         Número: {{endereco.numero}}
                     </li>
                     <li>
-                        Município: {{endereco.id_municipio}}
+                        Município: {{(municipio_principal | async)?.descricao}}
                     </li>
                 </ul>
             </div>
@@ -40,7 +40,7 @@
                         Número: {{endereco_alternativo.numero}}
                     </li>
                     <li>
-                        Município: {{endereco_alternativo.id_municipio}}
+                        Município: {{(municipio_alternativo | async)?.descricao}}
                     </li>
                 </ul>
             </div>
@@ -49,29 +49,32 @@
     <mat-tab-group mat-align-tabs="center">
         <mat-tab label="Propriedades">
             <mat-list role="list">
-                <mat-list-item role ="listitem" *ngFor="let propriedade of propriedades">{{propriedade.nome}}</mat-list-item>
+                <mat-list-item role ="listitem" *ngFor="let propriedade of propriedades"><strong>Nome: </strong>{{propriedade.nome}} | <strong>IE: </strong> {{propriedade.inscricao_estadual}}</mat-list-item>
             </mat-list>
         </mat-tab>
         <mat-tab label="Animais">
             <mat-list role="list">
                 <mat-list-item role ="listitem" *ngFor="let rebanho of rebanhos">
-                    Quantidade: {{rebanho.quantidade}} | Espécie: {{rebanho.id_especie}} | Propriedade: {{rebanho.id_propriedade}}
+                    <strong>Quantidade: </strong>{{rebanho.quantidade}} | <strong>Espécie: </strong> {{rebanho.especie}} | <strong>Propriedade: </strong> {{rebanho.propriedade}}
                 </mat-list-item>
             </mat-list>
+            <span *ngIf="rebanhos.length == 0">Sem rebanhos registrados</span>
         </mat-tab>
         <mat-tab label="Vendas">
             <mat-list role="list">
                 <mat-list-item role ="listitem" *ngFor="let venda of vendas">
-                    Data: {{venda.data_venda | date}} | Motivo: {{venda.motivo}} | Espécie: {{venda.id_especie}}
+                    <strong>Data: </strong> {{venda.data_venda | date}} | <strong>Motivo: </strong> {{venda.motivo}} | <strong>Espécie: </strong>{{venda.especie}}
                 </mat-list-item>
             </mat-list>
+            <span *ngIf="vendas.length == 0">Sem vendas registradas</span>
         </mat-tab>
         <mat-tab label="Compras">
             <mat-list role="list">
                 <mat-list-item role ="listitem" *ngFor="let compra of compras">
-                    Data: {{compra.data_venda | date}} | Motivo: {{compra.motivo}} | Espécie: {{compra.id_especie}}
+                    <strong>Data: </strong> {{compra.data_venda | date}} | <strong>Motivo: </strong> {{compra.motivo}} | <strong>Espécie: </strong> {{compra.especie}}
                 </mat-list-item>
             </mat-list>
+            <span *ngIf="compras.length == 0">Sem compras registradas</span>
         </mat-tab>
     </mat-tab-group>
 </div>

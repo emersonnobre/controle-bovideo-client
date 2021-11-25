@@ -13,17 +13,31 @@
                         Inscrição estadual: {{propriedade.inscricao_estadual}}
                     </li>
                     <li>
-                        Município: {{propriedade.id_municipio}}
+                        Município: {{(municipio | async)?.descricao}}
                     </li>
                     <li>
-                        Produtor: {{propriedade.id_produtor}}
+                        Produtor: {{(produtor | async)?.nome}}
                     </li>
                 </ul>
             </div>
         </div>
     </mat-card>
     <mat-tab-group mat-align-tabs="center">
-        <mat-tab label="Animais">...</mat-tab>
-        <mat-tab label="Registros de vacinação">...</mat-tab>
+        <mat-tab label="Animais">
+            <mat-list role="list">
+                <mat-list-item role ="listitem" *ngFor="let rebanho of rebanhos">
+                    <strong>Quantidade: </strong>{{rebanho.quantidade}} | <strong>Espécie: </strong> {{rebanho.especie}}
+                </mat-list-item>
+            </mat-list>
+            <span *ngIf="rebanhos.length == 0">Sem rebanhos registrados</span>
+        </mat-tab>
+        <mat-tab label="Registros de vacinação">
+            <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let vacinacao of vacinacoes">
+                    <strong>Data: </strong>{{vacinacao.data_vacina | date}} | <strong>Espécie: </strong>{{vacinacao.especie}} | <strong>Quantidade: </strong>{{vacinacao.quantidade}}
+                </mat-list-item>
+            </mat-list>
+            <span *ngIf="vacinacoes.length == 0">Sem vacinações registrados</span>
+        </mat-tab>
     </mat-tab-group>
 </div>

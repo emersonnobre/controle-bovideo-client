@@ -1,0 +1,45 @@
+.title {
+    margin: 20px auto;
+    width: 80%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+}
+
+.img {
+    width: 100%;
+    text-align: center;
+}
+
+.img > img {
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.informativo {
+    border: 0.1px solid black;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+.descricao-iagro {
+    width: 80%;
+    margin: 0 auto 1.5rem auto;
+    text-align: justify;
+    font-size: 1.5rem;
+}
+
+.descricao-iagro p {
+    color: black;
+    font-size: 16px;
+}
+
+.descricao-iagro a {
+    font-size: 12px;
+    color: blue;
+}
+
+ol {
+    padding: 0 1rem 0 1rem;
+}

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,  } from 'rxjs';
 import { Rebanho } from '../models/rebanho.model';
+import { EspecieService } from './especie.service';
 import { PropriedadeService } from './propriedade.service';
 
 @Injectable({
@@ -14,29 +15,32 @@ export class RebanhoService {
   constructor(
     private http: HttpClient,
     private propriedade_service: PropriedadeService,
+    private especie_service: EspecieService,
   ) { }
 
   getAll(): Observable<Rebanho[]> {
     return this.http.get<Rebanho[]>(this.base_url)
   }
 
-  getByIdPropriedade(id: number): Observable<Rebanho[]> {
-    const url = `${this.base_url}?id_propriedade=${id}`
+  getAllVacinados(): Observable<Rebanho[]> {
+    const url = `${this.base_url}/vacinados`
     return this.http.get<Rebanho[]>(url)
   }
 
-  getByIdProdutor(id: number): Promise<Rebanho[]> {
-    const rebanho: Rebanho[] = []
-    return new Promise((resolve, reject) => {
-      this.propriedade_service.getByIdProdutor(id).toPromise()
-        .then(propriedades => {
-          propriedades.forEach(propriedade => {
-            this.getByIdPropriedade(propriedade.id).toPromise()
-              .then(rebanhos => rebanho.push(...rebanhos))
-          })
-        })
-        .finally(() => resolve(rebanho))
-    })
+  getAllEntradas(): Observable<Rebanho[]> {
+    const url = `${this.base_url}/entradas`
+    return this.http.get<Rebanho[]>(url)
+  }
+
+  getByIdPropriedade(id: string): Observable<Rebanho[]> {
+    const url = `${this.base_url}?inscricao_estadual_propriedade=${id}`
+    return this.http.get<Rebanho[]>(url)
+  }
+
+  getByCpfProdutor(cpf: string): Observable<any[]> {
+    console.log(cpf)
+    const url = `${this.base_url}?cpf_produtor=${cpf}`
+    return this.http.get<any[]>(url)
   }
 
   getById(id: number): Observable<Rebanho> {
@@ -49,7 +53,7 @@ export class RebanhoService {
   }
 
   delete(id: number): Observable<any> {
-    const url = `${this.base_url}/${id}`
+    const url = `${this.base_url}/entrada/${id}`
     return this.http.delete<any>(url)
   }
 

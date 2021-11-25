@@ -16,7 +16,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Município</mat-label>
             <mat-select formControlName="municipio">
-              <mat-option *ngFor="let municipio of municipios" value="{{municipio.id}}">{{municipio.descricao}}</mat-option>
+              <mat-option *ngFor="let municipio of municipios" [value]="municipio.id">{{municipio.descricao}}</mat-option>
             </mat-select>
             <mat-error *ngIf="submited">Este campo não pode ser vazio</mat-error>
         </mat-form-field>

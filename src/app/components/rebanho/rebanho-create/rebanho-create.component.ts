@@ -54,7 +54,8 @@ export class RebanhoCreateComponent implements OnInit {
     }
     this.rebanho_service.post(this.novoRebanho).subscribe(response => {
       this.router.navigate(['rebanho'])
-      this.shared_service.showMessage(JSON.stringify(response))
+      console.log(response)
+      this.shared_service.showMessage(response.toString())
     })
   }
 

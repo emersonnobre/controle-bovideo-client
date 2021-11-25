@@ -86,8 +86,8 @@ export class PropriedadeReadComponent implements OnInit {
       return this.shared_service.showMessage('Somente números', true)
     }
     this.propriedade_service.getByInscricao(this. propriedade.inscricao_estadual).subscribe(response => {
-      if (response[0]) {
-        this.dataSource = [response[0]]
+      if (response) {
+        this.dataSource = [response]
       } else {
         this.loadAllPropriedades()
         this.shared_service.showMessage('Nenhuma propriedade encontrada', true)

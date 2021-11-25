@@ -8,18 +8,19 @@ import { Especie } from '../models/especie.model';
 })
 export class EspecieService {
 
-  baseUrl: string = 'http://localhost:3001/especie'
+  base_url: string = 'http://localhost:3000/api/especie'
 
   constructor(
     private http: HttpClient
   ) { }
 
   getAll(): Observable<Especie[]> {
-    return this.http.get<Especie[]>(this.baseUrl)
+    return this.http.get<Especie[]>(this.base_url)
   }
 
   getById(id: number): Observable<Especie> {
-    return this.http.get<Especie>(this.baseUrl)
+    const url = `${this.base_url}/${id}`
+    return this.http.get<Especie>(url)
   }
   
 }

@@ -9,6 +9,7 @@ import { MunicipioService } from 'src/app/services/municipio.service';
 import { ProdutorService } from 'src/app/services/produtor.service';
 import { SharedService } from 'src/app/services/shared.service';
 
+
 @Component({
   selector: 'app-produtor-create',
   templateUrl: './produtor-create.component.html',
@@ -108,10 +109,10 @@ export class ProdutorCreateComponent implements OnInit {
     }
     this.produtor_service.post(this.novo_produtor).subscribe(response => {
       this.novo_endereco.id_produtor = response.id
+      console.log(this.novo_endereco)
+      this.router.navigate(['produtor'])
       this.produtor_service.postEndereco(this.novo_endereco).subscribe(response => {
-        this.router.navigate(['produtor'])
-        this.shared_service.showMessage(JSON.stringify(response))
-      })
+      },err => console.log(err))
       if (this.address_alt_validate) {
         const endereco_alt_data = this.address_alt_form.value
         this.novo_endereco_alt = {
@@ -123,6 +124,9 @@ export class ProdutorCreateComponent implements OnInit {
         }
         this.produtor_service.postEndereco(this.novo_endereco_alt).subscribe(console.log)
       }
+      this.shared_service.showMessage('Produtor inserido com sucesso')
+    }, error => {
+      this.shared_service.showMessage(error.error, true)
     })
   }
 

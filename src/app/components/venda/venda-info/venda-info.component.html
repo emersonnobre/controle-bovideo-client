@@ -4,21 +4,21 @@
     </div>
     <div class="info-section">
         <div class="section">
-            <ul>
+            <ul *ngIf="venda">
                 <li>
-                    Data da venda: {{venda.data_venda}}
+                    Data da venda: {{venda.data_venda | date}}
                 </li>
                 <li>
                     Quantidade de animais: {{venda.quantidade}}
                 </li>
                 <li>
-                    Espécie: {{venda.id_especie}}
+                    Espécie: {{venda.especie}}
                 </li>
                 <li>
-                    Propriedade de origem: {{venda.id_propriedade_origem}}
+                    Propriedade de origem: {{venda.propriedade_origem}}
                 </li>
-                <li>
-                    Propriedade de destino: {{venda.id_propriedade_destino}}
+                <li *ngIf="propriedade_destino">
+                    Propriedade de destino: {{propriedade_destino}}
                 </li>
                 <li>
                     Motivo da venda: {{venda.motivo}}

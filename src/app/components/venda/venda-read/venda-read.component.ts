@@ -10,7 +10,7 @@ import { VendaService } from 'src/app/services/venda.service';
 })
 export class VendaReadComponent implements OnInit {
 
-  displayed_columns = ['data_venda', 'quantidade', 'id_especie', 'id_propriedade_destino', 'actions']
+  displayed_columns = ['data_venda', 'quantidade', 'id_especie', 'id_propriedade_origem', 'actions']
   data_source = []
 
   constructor(
@@ -20,7 +20,10 @@ export class VendaReadComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.venda_service.getAll().subscribe(response => this.data_source = response)
+    this.venda_service.getAll().subscribe(response => {
+      this.data_source = Array.from(response)
+      console.log(this.data_source)
+    })
   }
 
   redirectToCreate(): void {

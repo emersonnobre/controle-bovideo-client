@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Especie } from 'src/app/models/especie.model';
+import { Propriedade } from 'src/app/models/propriedade.model';
+import { Vacina } from 'src/app/models/vacina.model';
 import { Vacinacao } from 'src/app/models/vacinacao.model';
+import { EspecieService } from 'src/app/services/especie.service';
+import { PropriedadeService } from 'src/app/services/propriedade.service';
 import { VacinacaoService } from 'src/app/services/vacinacao.service';
 
 @Component({
@@ -19,10 +25,16 @@ export class VacinacaoInfoComponent implements OnInit {
     id: 0
   }
 
+  especie: Observable<Especie>
+  propriedade: Observable<Propriedade>
+  vacina: Observable<Vacina>
+
   constructor(
     private router: Router,
     private activated_route: ActivatedRoute,
     private vacinacao_service: VacinacaoService,
+    private especie_service: EspecieService,
+    private propriedade_service: PropriedadeService,
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +43,12 @@ export class VacinacaoInfoComponent implements OnInit {
   }
 
   loadVacinacao(): void {
-    this.vacinacao_service.getById(this.vacinacao.id).subscribe(response => this.vacinacao = response)
+    this.vacinacao_service.getById(this.vacinacao.id).subscribe(response => {
+      this.vacinacao = response
+      this.especie = this.especie_service.getById(this.vacinacao.id_especie)
+      this.propriedade = this.propriedade_service.getById(this.vacinacao.id_propriedade)
+      this.vacina = this.vacinacao_service.getTipoVacinaById(this.vacinacao.id_vacina)
+    })
   } 
 
 }

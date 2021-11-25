@@ -51,7 +51,8 @@ export class ProdutorReadComponent implements OnInit {
   }
 
   searchProdutor(): void {
-    if (this.produtor.cpf.length === 0 || this.produtor.cpf.length < 11) {
+    if (this.produtor.cpf.length === 0) this.produtor_service.getAll().subscribe(response => this.dataSource = response)
+    if (this.produtor.cpf.length < 11) {
       return this.shared_service.showMessage('Informe o CPF completo', true)
     } 
     if (!verificaNumero(Array.from(this.produtor.cpf))) return this.shared_service.showMessage('Somente números', true)

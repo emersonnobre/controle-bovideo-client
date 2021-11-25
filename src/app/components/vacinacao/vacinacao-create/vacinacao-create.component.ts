@@ -58,10 +58,11 @@ export class VacinacaoCreateComponent implements OnInit {
       id_propriedade: form_data.id_propriedade,
       id_vacina: form_data.id_vacina
     }
+    console.log(this.nova_vacinacao)
     this.vacinacao_service.post(this.nova_vacinacao).subscribe(response => {
       this.router.navigate(['vacinacao'])
-      this.shared_service.showMessage(JSON.stringify(response))
-    })
+      this.shared_service.showMessage(response.toString())
+    }, err => this.shared_service.showMessage(err.error, true))
   }
 
   cancel(): void {
