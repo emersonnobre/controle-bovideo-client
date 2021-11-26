@@ -38,7 +38,7 @@ export class VendaReadComponent implements OnInit {
     this.venda_service.delete(id).subscribe(() => {
       this.shared_service.showMessage('Registro de venda deletado')
       setTimeout(() => window.location.reload(), 900)
-    })
+    }, error => console.log(error))
   }
 
 }

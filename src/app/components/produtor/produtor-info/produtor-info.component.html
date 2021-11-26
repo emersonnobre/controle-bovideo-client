@@ -51,6 +51,7 @@
             <mat-list role="list">
                 <mat-list-item role ="listitem" *ngFor="let propriedade of propriedades"><strong>Nome: </strong>{{propriedade.nome}} | <strong>IE: </strong> {{propriedade.inscricao_estadual}}</mat-list-item>
             </mat-list>
+            <span *ngIf="propriedades.length == 0">Sem propriedades registradas</span>
         </mat-tab>
         <mat-tab label="Animais">
             <mat-list role="list">

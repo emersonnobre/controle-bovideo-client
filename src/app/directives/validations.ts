@@ -76,4 +76,5 @@ export class Validations {
 
     return checkIe(ie)
   }
+  
 }

@@ -21,7 +21,7 @@ export class RebanhoReadComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.rebanho_service.getAll().subscribe(response => this.dataSource = response)
+    this.rebanho_service.getAll().subscribe(response => this.dataSource = response.filter(rebanho => rebanho.quantidade > 0))
   }
 
   redirectToCreate(): void {
@@ -42,17 +42,17 @@ export class RebanhoReadComponent implements OnInit {
   visualizar(tipo_visuzalizao: string): void {
     if (tipo_visuzalizao === 'todos') {
       this.displayedColumns = ['especie', 'quantidade', 'propriedade']
-      this.rebanho_service.getAll().subscribe(response => this.dataSource = response)
+      this.rebanho_service.getAll().subscribe(response => this.dataSource = response.filter(rebanho => rebanho.quantidade > 0))
       return
     }
     if (tipo_visuzalizao === 'entradas') {
       this.displayedColumns = ['especie', 'quantidade', 'propriedade', 'data', 'actions']
-      this.rebanho_service.getAllEntradas().subscribe(response => this.dataSource = response)
+      this.rebanho_service.getAllEntradas().subscribe(response => this.dataSource = response.filter(rebanho => rebanho.quantidade > 0))
       return
     }
     if (tipo_visuzalizao === 'vacinados') {
       this.displayedColumns = ['especie', 'quantidade', 'propriedade', 'vacina']
-      this.rebanho_service.getAllVacinados().subscribe(response => this.dataSource = response)
+      this.rebanho_service.getAllVacinados().subscribe(response => this.dataSource = response.filter(rebanho => rebanho.quantidade > 0))
     }
   }
 

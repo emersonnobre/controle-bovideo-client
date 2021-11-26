@@ -55,7 +55,7 @@ export class RebanhoCreateComponent implements OnInit {
     this.rebanho_service.post(this.novoRebanho).subscribe(response => {
       this.router.navigate(['rebanho'])
       console.log(response)
-      this.shared_service.showMessage(response.toString())
+      this.shared_service.showMessage('Entrada animal registrada')
     })
   }
 
